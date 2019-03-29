@@ -1,9 +1,9 @@
-import { url } from '../config';
+import {url} from '../config';
 
 const PlaceStore = {
   state: {
     places: [],
-    status: "pending" | "idle",
+    status: 'pending' | 'idle',
     currentPlace: {},
   },
   mutations: {
@@ -15,27 +15,25 @@ const PlaceStore = {
     },
     setCurrentPlace(state, place) {
       state.place = place;
-    }
+    },
   },
   actions: {
-    fetchAll({ commit }) {
-      commit('setStatus', "pending");
-      fetch(`${url}/place`)
-          .then(response => response.json())
-          .then(data => {
-            commit('setPlaces', data);
-            commit('setStatus', "idle");
-          });
-    }
+    fetchAll({commit}) {
+      commit('setStatus', 'pending');
+      fetch(`${url}/place`).then(response => response.json()).then(data => {
+        commit('setPlaces', data);
+        commit('setStatus', 'idle');
+      });
+    },
   },
   getters: {
     getPlacesByType: (state) => (placeType) => {
       return state.places.find(place => place.place_type === placeType);
     },
     isLoading: (state) => {
-      return state.status === "pending";
-    }
-  }
+      return state.status === 'pending';
+    },
+  },
 };
 
 export default PlaceStore;
