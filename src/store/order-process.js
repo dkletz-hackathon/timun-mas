@@ -13,6 +13,7 @@ const orderProcess = {
       user_id: -1,
       time: "",
     },
+    orderId: -1,
     status: 'idle',
   },
   mutations: {
@@ -40,6 +41,9 @@ const orderProcess = {
     setTime(state, time) {
       state.time = time;
     },
+    setOrderId(state, id) {
+      state.orderId = id;
+    }
   },
   actions: {
     fetchProduct({ commit, rootStore }, { id }) {
@@ -50,7 +54,7 @@ const orderProcess = {
           commit('setProduct', data);
         })
     },
-    submit({ commit, rootState, state }, { time }) {
+    submit({ commit, rootState, state }, { time, callback }) {
       commit('setStatus', 'pending');
       console.log('Sending', {
         ...state.order,
@@ -73,6 +77,8 @@ const orderProcess = {
           then(data => {
             console.log(data);
             commit('setStatus', 'done');
+            commit('setOrderId', data.id);
+            callback(data.id);
           }).catch(() => commit('setStatus', 'done'));
     },
   },

@@ -6,13 +6,13 @@
     </div>
     <div id="order__form">
       <v-text-field
-        label="Jumlah"
-        placeholder="1"
-        clearable
-        v-model="total"></v-text-field>
+          label="Jumlah"
+          placeholder="1"
+          clearable
+          v-model="total"></v-text-field>
       <v-date-picker
-        v-model="startDate"
-        :reactive="true"
+          v-model="startDate"
+          :reactive="true"
       />
       <v-dialog
           ref="dialog"
@@ -43,16 +43,17 @@
         </v-time-picker>
       </v-dialog>
       <v-text-field
-        label="Durasi (dalam jam)"
-        placeholder="1"
-        v-model="duration"
-        clearable></v-text-field>
+          label="Durasi (dalam jam)"
+          placeholder="1"
+          v-model="duration"
+          clearable></v-text-field>
       <v-text-field
-        label="Nomor HP"
-        placeholder="Contoh: 0812XXXXXXX"
-        v-model="phoneNumber"
-        clearable></v-text-field>
-      <button class="btn_box" @click="order">
+          label="Nomor HP"
+          placeholder="Contoh: 0812XXXXXXX"
+          v-model="phoneNumber"
+          clearable></v-text-field>
+      <v-progress-circular class="center" :indeterminate="true" v-if="isLoading"></v-progress-circular>
+      <button class="btn_box" @click="order" v-else>
         Selesaikan Pembayaran
       </button>
     </div>
@@ -60,96 +61,111 @@
 </template>
 
 <script>
-export default {
-  name: 'Order',
-  props: {
-    id: '',
-  },
-  data() {
-    return {
-      modal2: false,
-      time: '',
-    }
-  },
-  mounted() {
-    console.log(this.id);
-    this.$store.commit('orderProcess/setProductId', this.id, { root: true });
-    this.$store.dispatch('orderProcess/fetchProduct', { id: this.id }, { root: true });
-  },
-  methods: {
-    order() {
-      this.$store.dispatch('orderProcess/submit', { time: this.time }, { root: true});
-    }
-  },
-  computed: {
-    product: {
-      get () {
-        return this.$store.state.product;
-      }
+  import router from '../router';
+
+  export default {
+    name: 'Order',
+    props: {
+      id: '',
     },
-    startDate: {
-      get () {
-        return this.$store.state.orderProcess.order.start_date;
+    data() {
+      return {
+        modal2: false,
+        time: '',
+      };
+    },
+    mounted() {
+      console.log(this.id);
+      this.$store.commit('orderProcess/setProductId', this.id, {root: true});
+      this.$store.dispatch('orderProcess/fetchProduct', {id: this.id}, {root: true});
+    },
+    methods: {
+      order() {
+        this.$store.dispatch('orderProcess/submit',
+            {
+              time: this.time, callback: (id) => router.push({path: `/transaction/${id}`}),
+            },
+            {
+              root: true,
+            },
+        )
+        ;
       },
-      set (value) {
-        console.log(value);
-        this.$store.commit('orderProcess/setStartDate', value, { root: true });
-      }
     },
-    total: {
-      get () {
-        return this.$store.state.orderProcess.order.total;
+    computed: {
+      product: {
+        get() {
+          return this.$store.state.product;
+        },
       },
-      set (value) {
-        this.$store.commit('orderProcess/setTotal', value, { root: true });
-      }
-    },
-    duration: {
-      get () {
-        return this.$store.state.orderProcess.order.duration;
+      startDate: {
+        get() {
+          return this.$store.state.orderProcess.order.start_date;
+        },
+        set(value) {
+          console.log(value);
+          this.$store.commit('orderProcess/setStartDate', value, {root: true});
+        },
       },
-      set (value) {
-        this.$store.commit('orderProcess/setDuration', value, { root: true });
-      }
-    },
-    phoneNumber: {
-      get () {
-        return this.$store.state.orderProcess.order.phone_num;
+      total: {
+        get() {
+          return this.$store.state.orderProcess.order.total;
+        },
+        set(value) {
+          this.$store.commit('orderProcess/setTotal', value, {root: true});
+        },
       },
-      set (value) {
-        this.$store.commit('orderProcess/setPhoneNumber', value, { root: true });
-      }
+      duration: {
+        get() {
+          return this.$store.state.orderProcess.order.duration;
+        },
+        set(value) {
+          this.$store.commit('orderProcess/setDuration', value, {root: true});
+        },
+      },
+      phoneNumber: {
+        get() {
+          return this.$store.state.orderProcess.order.phone_num;
+        },
+        set(value) {
+          this.$store.commit('orderProcess/setPhoneNumber', value, {root: true});
+        },
+      },
+      isLoading() {
+        return this.$store.getters['orderProcess/isLoading'];
+      },
     },
-  },
-  created() {
-    console.log(this.id);
-  }
-}
+    created() {
+      console.log(this.id);
+    },
+  };
 </script>
 
 <style lang="scss" scoped>
-#order {
-  min-height: 100vh;
-  padding-top: 8vh !important;
+  #order {
+    min-height: 100vh;
+    padding-top: 8vh !important;
 
-  #order__header {
-    font-family: 'Playfair Display';
-    font-weight: normal;
-    letter-spacing: 0.1rem;
-    text-align: center;
-    font-size: 3vh;
-  }
-
-  #order__form {
-    padding: 5vh;
-    button {
-      width: 100%;
+    #order__header {
+      font-family: 'Playfair Display';
+      font-weight: normal;
+      letter-spacing: 0.1rem;
+      text-align: center;
+      font-size: 3vh;
     }
-    .v-picker {
-      .v-picker__title {
-        background-color: black !important;
+
+    #order__form {
+      padding: 5vh;
+
+      button {
+        width: 100%;
+      }
+
+      .v-picker {
+        .v-picker__title {
+          background-color: black !important;
+        }
       }
     }
   }
-}
 </style>

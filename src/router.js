@@ -7,6 +7,7 @@ import Product from './components/PlaceDetail/Product.vue'
 import Souvenir from './views/Souvenir.vue'
 import PlaceDetail from './views/PlaceDetail.vue'
 import Order from './views/Order.vue'
+import Transaction from './views/Transaction'
 
 Vue.use(Router);
 
@@ -50,6 +51,11 @@ export default new Router({
           price: 100000,
         }
       }
+    },
+    {
+      path: '/transaction/:id',
+      name: 'Transaction',
+      component: Transaction,
     },
     {
       path: '/souvenir',
