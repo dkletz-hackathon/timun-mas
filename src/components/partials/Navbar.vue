@@ -31,10 +31,10 @@
         class="nav__icon"
         @click="toggleMenu"
       >
-        <img src="../../assets/img/icons/menu.png" alt="">
+        <img :src="menuIcon" alt="">
       </div>
       <div class="nav__icon">
-        <img src="../../assets/img/icons/search.png" alt="">
+        <img :src="searchIcon" alt="">
       </div>
     </div>
   </div>
@@ -47,8 +47,8 @@ export default {
     return {
       isScroll: false,
       isMenu: false,
-      menuIcon: '',
-      searchIcon: '',
+      menuIcon: require("../../assets/img/icons/menu.png"),
+      searchIcon: require("../../assets/img/icons/search.png"),
       menu: [
         {
           name: 'Login',
@@ -76,8 +76,12 @@ export default {
     handleScroll(event) {
       if(window.scrollY > 0) {
         this.isScroll = true;
+        this.menuIcon = require("../../assets/img/icons/menu-black.png");
+        this.searchIcon = require("../../assets/img/icons/search-black.png");
       } else {
         this.isScroll = false;
+        this.menuIcon = require("../../assets/img/icons/menu.png");
+        this.searchIcon = require("../../assets/img/icons/search.png");
       }
     },
     toggleMenu() {
