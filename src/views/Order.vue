@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-container fluid id="order">
     <h1 id="order__header">Pemesanan</h1>
     <div id="order__summary">
@@ -14,6 +14,34 @@
         v-model="startDate"
         :reactive="true"
       />
+      <v-dialog
+          ref="dialog"
+          v-model="modal2"
+          :return-value.sync="time"
+          persistent
+          lazy
+          full-width
+          width="290px"
+      >
+        <template v-slot:activator="{ on }">
+          <v-text-field
+              v-model="time"
+              label="Picker in dialog"
+              prepend-icon="access_time"
+              readonly
+              v-on="on"
+          ></v-text-field>
+        </template>
+        <v-time-picker
+            v-if="modal2"
+            v-model="time"
+            full-width
+        >
+          <v-spacer></v-spacer>
+          <v-btn flat color="primary" @click="$refs.dialog.save(time)">OK</v-btn>
+          <v-btn flat color="primary" @click="modal2 = false">Cancel</v-btn>
+        </v-time-picker>
+      </v-dialog>
       <v-text-field
         label="Durasi (dalam jam)"
         placeholder="1"
@@ -37,13 +65,20 @@ export default {
   props: {
     id: '',
   },
+  data() {
+    return {
+      modal2: false,
+      time: '',
+    }
+  },
   mounted() {
     console.log(this.id);
+    this.$store.commit('orderProcess/setProductId', this.id, { root: true });
     this.$store.dispatch('orderProcess/fetchProduct', { id: this.id }, { root: true });
   },
   methods: {
     order() {
-      this.$store.dispatch('orderProcess/submit');
+      this.$store.dispatch('orderProcess/submit', { time: this.time }, { root: true});
     }
   },
   computed: {
@@ -58,7 +93,7 @@ export default {
       },
       set (value) {
         console.log(value);
-        this.$store.commit('orderProcess/setStartDate', value);
+        this.$store.commit('orderProcess/setStartDate', value, { root: true });
       }
     },
     total: {
@@ -66,7 +101,7 @@ export default {
         return this.$store.state.orderProcess.order.total;
       },
       set (value) {
-        this.$store.commit('orderProcess/setTotal', value);
+        this.$store.commit('orderProcess/setTotal', value, { root: true });
       }
     },
     duration: {
@@ -74,7 +109,7 @@ export default {
         return this.$store.state.orderProcess.order.duration;
       },
       set (value) {
-        this.$store.commit('orderProcess/setDuration', value);
+        this.$store.commit('orderProcess/setDuration', value, { root: true });
       }
     },
     phoneNumber: {
@@ -82,9 +117,9 @@ export default {
         return this.$store.state.orderProcess.order.phone_num;
       },
       set (value) {
-        this.$store.commit('orderProcess/setPhoneNumber', value);
+        this.$store.commit('orderProcess/setPhoneNumber', value, { root: true });
       }
-    }
+    },
   },
   created() {
     console.log(this.id);

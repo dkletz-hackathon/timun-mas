@@ -11,6 +11,7 @@ const orderProcess = {
       product_id: -1,
       phone_num: "",
       user_id: -1,
+      time: "",
     },
     status: 'idle',
   },
@@ -35,7 +36,10 @@ const orderProcess = {
     },
     setStatus(state, status) {
       state.status = status;
-    }
+    },
+    setTime(state, time) {
+      state.time = time;
+    },
   },
   actions: {
     fetchProduct({ commit, rootStore }, { id }) {
@@ -46,15 +50,24 @@ const orderProcess = {
           commit('setProduct', data);
         })
     },
-    submit({ commit, rootStore }) {
+    submit({ commit, rootState, state }, { time }) {
       commit('setStatus', 'pending');
-      console.log('Sending', state.order);
+      console.log('Sending', {
+        ...state.order,
+        start_date: `${state.order.start_date} ${time}+07`
+      });
+      console.log('Authorization', rootState.session);
       fetch(`${url}/order`, {
         method: 'POST',
         mode: 'cors',
         headers: {
-          'Authorization': rootStore.state.session.token
-        }
+          'Authorization': `Bearer ${rootState.session.token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...state.order,
+          start_date: `${state.order.start_date} ${time}+07`
+        })
       }).
           then(response => response.json()).
           then(data => {
@@ -67,6 +80,9 @@ const orderProcess = {
     isLoading: (state) => {
       return state.status === 'pending';
     },
+    order: (state) => {
+      return state.order;
+    }
   },
 };
 
