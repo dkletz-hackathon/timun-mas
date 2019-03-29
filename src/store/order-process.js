@@ -3,10 +3,11 @@ import { url } from '../config';
 const orderProcess = {
   namespaced: true,
   state: {
+    product: {},
     order: {
       start_date: "",
-      duration: -1,
-      total: -1,
+      duration: 1,
+      total: 1,
       product_id: -1,
       phone_num: "",
       user_id: -1,
@@ -14,6 +15,9 @@ const orderProcess = {
     status: 'idle',
   },
   mutations: {
+    setProduct(state, product) {
+      state.product = product;
+    },
     setStartDate(state, startDate) {
       state.order.start_date = startDate;
     },
@@ -34,6 +38,14 @@ const orderProcess = {
     }
   },
   actions: {
+    fetchProduct({ commit, rootStore }, { id }) {
+      fetch(`${url}/product/${id}`, {mode: 'cors'}).
+        then(response => response.json()).
+        then(data => {
+          console.log(data);
+          commit('setProduct', data);
+        })
+    },
     submit({ commit, rootStore }) {
       commit('setStatus', 'pending');
       console.log('Sending', state.order);
@@ -46,6 +58,7 @@ const orderProcess = {
       }).
           then(response => response.json()).
           then(data => {
+            console.log(data);
             commit('setStatus', 'done');
           }).catch(() => commit('setStatus', 'done'));
     },

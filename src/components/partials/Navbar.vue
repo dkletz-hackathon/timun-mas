@@ -5,6 +5,7 @@
       v-if="isMenu"
       v-bind:class="{ 'show': isMenu }"
     >
+      <p id="close" @click="toggleMenu">X</p>
       <router-link to="/">
         <img
           @click="toggleMenu"
@@ -106,6 +107,12 @@ div {
   width: 65vw;
   padding: 4vh;
   transition-duration: 0.2s;
+
+  #close {
+    font-size: 3.5vh;
+    text-align: right;
+    margin: 0;
+  }
 
   &.show {
     -webkit-animation: slide 0.5s forwards;
