@@ -19,27 +19,27 @@
 
 
 <script>
-  import Place from './Place';
+import Place from './Place';
 
-  export default {
-    name: 'PlaceList',
-    computed: {
-      places() {
-        return this.$store.state.placeList.places;
-      },
-      isLoading() {
-        return this.$store.getters['placeList/isLoading'];
-      },
+export default {
+  name: 'PlaceList',
+  computed: {
+    places() {
+      return this.$store.state.placeList.places;
     },
-    beforeMount() {
-      if (!this.$store.getters['placeList/hasLoad']) {
-        this.$store.dispatch('placeList/fetchAll', {}, {root: true});
-      }
+    isLoading() {
+      return this.$store.getters['placeList/isLoading'];
     },
-    components: {
-      Place,
-    },
-  };
+  },
+  beforeMount() {
+    if (!this.$store.getters['placeList/hasLoad']) {
+      this.$store.dispatch('placeList/fetchAll', {}, {root: true});
+    }
+  },
+  components: {
+    Place,
+  },
+};
 </script>
 
 <style lang="scss" scoped>

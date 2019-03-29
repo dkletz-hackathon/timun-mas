@@ -6,16 +6,19 @@
       v-bind:class="{ 'show': isMenu }"
     >
       <router-link to="/">
-        <img src="../../assets/img/logo.png" alt="">
+        <img
+          @click="toggleMenu"
+          src="../../assets/img/logo.png"
+          alt="logo"
+        >
       </router-link>
       <router-link
         class="menu__item"
         v-for="m in menu"
         :key="m.name"
         :to="m.link"
-        @click="toggleMenu"
       >
-        <h1>{{ m.name }}</h1>
+        <h1 @click="toggleMenu">{{ m.name }}</h1>
         <div />
       </router-link>
     </div>
@@ -78,6 +81,7 @@ export default {
     },
     toggleMenu() {
       this.isMenu = !this.isMenu;
+      console.log(this.isMenu);
     }
   },
 }

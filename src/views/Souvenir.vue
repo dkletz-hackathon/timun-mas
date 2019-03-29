@@ -22,11 +22,11 @@
           ></v-select>
         </div>
         <div class="view_grid">
-          <product
+          <place
             class="product"
-            v-for="product in products"
-            :key="product.name"
-            :product="product"
+            v-for="p in places"
+            :key="p.name"
+            :place="p"
           />
         </div>
       </v-flex>
@@ -36,35 +36,53 @@
 
 <script>
 import Product from '@/components/PlaceDetail/Product.vue'
+import Place from '@/components/Place.vue'
 
 export default {
   name: 'Souvenir',
   components: {
-    Product
+    Product,
+    Place
   },
   data() {
     return {
       items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
-      places: [
-        {
-          name: 'Pepz Kitchen - Kerupuk Rumput Laut',
-          price: 50000
-        },
-        {
-          name: 'Kopi Khas Banyuwangi',
-          price: 20000
-        },
-        {
-          name: 'Kopi Banyuwangi',
-          price: 20000
-        },
-        {
-          name: 'Kopi Baru Banyuwangi',
-          price: 20000
-        }
-      ]
+      // places: [
+      //   {
+      //     name: 'Pepz Kitchen - Kerupuk Rumput Laut',
+      //     price: 50000
+      //   },
+      //   {
+      //     name: 'Kopi Khas Banyuwangi',
+      //     price: 20000
+      //   },
+      //   {
+      //     name: 'Kopi Banyuwangi',
+      //     price: 20000
+      //   },
+      //   {
+      //     name: 'Kopi Baru Banyuwangi',
+      //     price: 20000
+      //   }
+      // ]
     }
-  }
+  },
+  computed: {
+    places() {
+      let data = this.$store.state.placeList.places;
+      return data.filter((value) => {
+        return value.category === 'souvenir';
+      });
+    },
+    isLoading() {
+      return this.$store.getters['placeList/isLoading'];
+    },
+  },
+  beforeMount() {
+    if (!this.$store.getters['placeList/hasLoad']) {
+      this.$store.dispatch('placeList/fetchAll', {}, {root: true});
+    }
+  },
 }
 </script>
 
@@ -78,7 +96,7 @@ export default {
 
 #souvenir__header {
   height: 30vh;
-  background: #ffffff url('http://3.bp.blogspot.com/-EWR9lu2aVlw/UgO06Xr3fjI/AAAAAAAAEG0/zgyOCbBmxEw/s1600/teluk+hijau+1.jpg') no-repeat right top;
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('http://3.bp.blogspot.com/-EWR9lu2aVlw/UgO06Xr3fjI/AAAAAAAAEG0/zgyOCbBmxEw/s1600/teluk+hijau+1.jpg') no-repeat right top;
 
   h1 {
     margin-top: 16vh;

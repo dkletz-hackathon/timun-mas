@@ -1,6 +1,6 @@
 <template>
   <v-card class="product-box" flat>
-    <img :src="product.image_url || data.placeholderUrl" alt="Product's Cover" class="full-width product-image">
+    <img :src="product.image_url || this.placeholder_url" alt="Product's Cover" class="full-width product-image">
     <h1>{{ product.name }}</h1>
     <div class="horizontal">
       <!-- <p class="accent">
@@ -8,7 +8,7 @@
       </p> -->
       <!-- <div class="expand-box"></div> -->
       <p class="subtitle">
-        Rp {{ product.price || 200000 }}/pcs
+        Rp {{ product.price }} / pcs
       </p>
     </div>
   </v-card>
@@ -38,6 +38,8 @@ export default {
 }
 
 .product-box {
+  width: 40vw;
+
   h1 {
     font-family: 'Playfair Display';
     font-size: 4vw;

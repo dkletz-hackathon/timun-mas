@@ -16,24 +16,25 @@
 </template>
 
 <script>
-  import router from '../router'
+import router from '../router'
 
-  export default {
-    name: 'Place',
-    props: {
-      place: {},
+export default {
+  name: 'Place',
+  props: {
+    place: {},
+  },
+  data() {
+    return {
+      placeholderUrl: 'https://jlfarchitects.com/wp-content/uploads/2015/03/img-placeholder.jpg',
+    };
+  },
+  methods: {
+    navigateToPlace() {
+      console.log(`/detail/${this.$props.place.id}`);
+      router.push({path: `/detail/${this.$props.place.id}`});
     },
-    data() {
-      return {
-        placeholderUrl: 'https://jlfarchitects.com/wp-content/uploads/2015/03/img-placeholder.jpg',
-      };
-    },
-    methods: {
-      navigateToPlace() {
-        router.push({path: `/detail/${this.$props.place.id}`});
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
