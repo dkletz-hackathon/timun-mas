@@ -9,6 +9,7 @@ const orderProcess = {
       total: -1,
       product_id: -1,
       phone_num: "",
+      user_id: -1,
     },
     status: 'idle',
   },
@@ -36,12 +37,18 @@ const orderProcess = {
     submit({ commit, rootStore }) {
       commit('setStatus', 'pending');
       console.log('Sending', state.order);
-      fetch(`${url}/order`, {method: 'POST', mode: 'cors'}).
+      fetch(`${url}/order`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Authorization': rootStore.state.session.token
+        }
+      }).
           then(response => response.json()).
           then(data => {
             commit('setStatus', 'done');
           }).catch(() => commit('setStatus', 'done'));
-    }
+    },
   },
   getters: {
     isLoading: (state) => {
