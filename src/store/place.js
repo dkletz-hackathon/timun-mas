@@ -9,6 +9,7 @@ const place = {
   },
   mutations: {
     setPlaces(state, places) {
+      console.log('Get data', places);
       state.places = places;
     },
     setStatus(state, status) {
@@ -22,7 +23,7 @@ const place = {
   actions: {
     fetchAll({commit}) {
       commit('setStatus', 'pending');
-      fetch(`${url}/place`).then(response => response.json()).then(data => {
+      fetch(`${url}/places`, {mode: 'cors'}).then(response => response.json()).then(data => {
         commit('setPlaces', data);
         commit('setStatus', 'done');
       }).catch(() => commit('setStatus', 'idle'));

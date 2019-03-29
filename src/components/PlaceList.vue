@@ -2,12 +2,8 @@
     <v-container>
         <v-progress-circular :indeterminate="true" v-if="isLoading"></v-progress-circular>
         <v-layout v-else>
-            <v-flex
-                    v-for="n in places.length"
-                    :key="n"
-                    xs4
-            >
-                <Place :place="places[n]"></Place>
+            <v-flex v-for="place in places"  xs4>
+                <Place :place="place"></Place>
             </v-flex>
         </v-layout>
     </v-container>

@@ -18,7 +18,7 @@ const product = {
     fetchAll({commit, rootState}) {
       const {id} = rootState.place.currentPlace;
       commit('setStatus', 'pending');
-      fetch(`${url}/product?place=${id}`).
+      fetch(`${url}/product?place=${id}`, {mode: 'cors'}).
           then(response => response.json()).
           then(data => {
             commit('setProducts', data);
