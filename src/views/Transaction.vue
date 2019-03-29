@@ -16,7 +16,7 @@
       <p>Lakukan pembayaran melalui ATM BRI.</p>
       <div v-if="payment === 'bri'">
         <p>Silahkan transfer sejumlah</p>
-        <h2>{{ order.total_price }}</h2>
+        <h2>Rp {{ addCurrency(order.total_price) }}</h2>
         <p>Ke rekening berikut</p>
         <h2>888801000157508</h2>
         <v-text-field label="No Refferal" v-model="referral"></v-text-field>
