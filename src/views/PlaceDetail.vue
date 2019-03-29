@@ -7,10 +7,9 @@
         <h1>{{ place.name }}</h1>
         <v-textarea
           name="input-7-1"
-          label="Default style"
+          label="Komentar kamu"
           placeholder="Tulis komentar kamu disini!"
-          value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
-          hint="Hint text"
+          value=""
         ></v-textarea>
       </div>
     </div>
