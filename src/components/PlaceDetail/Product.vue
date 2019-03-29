@@ -13,7 +13,7 @@
         </p> -->
         <!-- <div class="expand-box"></div> -->
         <p class="subtitle">
-          Rp {{ product.price }} / pcs
+          Rp {{ addCurrency(product.price) }} / pcs
         </p>
       </div>
     </v-card>
@@ -45,7 +45,11 @@ export default {
           }
         });
       }
-    }
+    },
+    addCurrency (value) {
+      let val = (value/1).toFixed(2).replace('.', ',');
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
   }
 };
 </script>

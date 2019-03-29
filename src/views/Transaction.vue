@@ -7,7 +7,7 @@
         terjamin</p>
       <v-radio label="ATM BRI" value="bri"></v-radio>
       <p>Lakukan pembayaran melalui ATM BRI. Silahkan transfer sejumlah</p>
-      <h2>{{ order.total_price }}</h2>
+      <h2>{{ addCurrency(order.total_price) }}</h2>
       <p>Ke rekening berikut</p>
       <h2>888801000157508</h2>
       <v-text-field label="No Refferal" v-model="referral"></v-text-field>
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'Transaction',
     data() {
@@ -45,6 +44,10 @@
             },
           });
         }
+      },
+      addCurrency (value) {
+        let val = (value/1).toFixed(2).replace('.', ',');
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
       },
     },
     mounted() {
