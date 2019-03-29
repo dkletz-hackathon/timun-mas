@@ -1,7 +1,15 @@
 <template>
   <v-card class="product-box" flat v-on:click="navigateToPlace()">
-    <img :src="place.image_url || data.placeholderUrl" alt="Product's Cover" class="place-image">
-    <h1>{{ place.name }}</h1>
+    <div class="place-image">
+      <img
+        :src="place.image_url || data.placeholderUrl"
+        alt="Product's Cover"
+        class="darken"
+      >
+    </div>
+    <div class="place__overlay">
+      <h1>{{ place.name }}</h1>
+    </div>
   </v-card>
 </template>
 
@@ -11,7 +19,6 @@
   export default {
     name: 'Place',
     props: {
-
       place: {},
     },
     data() {
@@ -28,9 +35,33 @@
   };
 </script>
 
-<style scoped>
-  .place-image {
-    max-width: 200px;
-    max-height: 200px;
+<style lang="scss" scoped>
+.product-box {
+  height: 18vh;
+  margin-right: 2vh;
+}
+
+.place-image {
+  width: 100%;
+  height: 18vh;
+  position: absolute;
+  overflow: hidden;
+
+  img {
+    height: 100%;
   }
+}
+
+.place__overlay {
+  position: absolute;
+  color: white;
+  padding: 1vh;
+
+  h1 {
+    margin-top: 11vh;
+    font-family: 'Playfair Display';
+    font-weight: normal;
+    font-size: 2.5vh;
+  }
+}
 </style>

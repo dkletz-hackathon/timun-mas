@@ -1,8 +1,11 @@
 <template>
-  <v-container>
+  <v-container class="placelist">
     <v-progress-circular :indeterminate="true" v-if="isLoading"></v-progress-circular>
     <v-layout v-else>
-      <v-flex v-for="place in places" :key="place.id" xs4>
+      <v-flex
+        v-for="place in places"
+        :key="place.id"
+      >
         <Place :place="place"></Place>
       </v-flex>
     </v-layout>
@@ -34,6 +37,8 @@
   };
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.placelist {
+  margin-top: 2vh !important;
+}
 </style>
