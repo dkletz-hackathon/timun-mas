@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { placeStore, productStore } from './store';
+import placeStore from './store/place-store'
+import productStore from './store/product-store'
 
 Vue.use(Vuex);
 

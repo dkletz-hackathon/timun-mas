@@ -1,6 +1,7 @@
 import {url} from '../config';
 
 const productStore = {
+  namespaced: true,
   state: {
     products: [],
     status: 'pending' | 'idle',
