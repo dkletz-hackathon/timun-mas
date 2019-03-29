@@ -1,15 +1,17 @@
 <template>
-  <div>
+  <div v-if="products.length > 0">
     <v-progress-circular :indeterminate="true" v-if="isLoading"></v-progress-circular>
     <div v-else>
       <div class="section_header">
-        <h1 class="section_title">Katalog produk</h1>
+        <h1 class="section_title">{{ this.title }}</h1>
       </div>
-      <v-layout row wrap id="product__grid">
-        <v-flex v-for="product in products" :key="product.id" xs4>
-          <product :product="product" />
-        </v-flex>
-      </v-layout>
+      <div id="product__grid">
+        <product
+          v-for="product in products"
+          :key="product.id"
+          :product="product"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -19,8 +21,30 @@ import Product from './Product';
 
 export default {
   name: 'ProductList',
+  data() {
+    return {
+      title: ''
+    }
+  },
   props: {
     id: '',
+    category: ''
+  },
+  mounted() {
+    switch(this.category) {
+      case 'souvenir':
+        this.title = 'Katalog produk';
+        break;
+      case 'tourism':
+        this.title = 'Rekreasi populer di sekitar sini';
+        break;
+      case 'culinary':
+        this.title = 'Daftar menu';
+        break;
+      default:
+        break;
+    }
+    console.log(this.title);
   },
   computed: {
     products() {
@@ -40,5 +64,11 @@ export default {
 <style lang="scss" scoped>
 #product__grid {
   margin-top: 2vh;
+  overflow: auto;
+  white-space: nowrap;
+
+  span {
+    display: inline-block;
+  }
 }
 </style>
