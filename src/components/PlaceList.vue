@@ -1,14 +1,19 @@
 <template>
   <v-container class="placelist">
-    <v-progress-circular :indeterminate="true" v-if="isLoading"></v-progress-circular>
-    <v-layout v-else>
-      <v-flex
+    <v-progress-circular
+      :indeterminate="true"
+      v-if="isLoading"
+    />
+    <div
+      v-else
+      class="placegrid"
+    >
+      <place
         v-for="place in places"
         :key="place.id"
-      >
-        <Place :place="place"></Place>
-      </v-flex>
-    </v-layout>
+        :place="place"
+      />
+    </div>
   </v-container>
 </template>
 
@@ -40,5 +45,13 @@
 <style lang="scss" scoped>
 .placelist {
   margin-top: 2vh !important;
+}
+
+.placegrid {
+  overflow: auto;
+  white-space: nowrap;
+  span {
+    display: inline-block;
+  }
 }
 </style>

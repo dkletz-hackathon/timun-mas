@@ -1,16 +1,18 @@
 <template>
-  <v-card class="product-box" flat v-on:click="navigateToPlace()">
-    <div class="place-image">
-      <img
-        :src="place.image_url || data.placeholderUrl"
-        alt="Product's Cover"
-        class="darken"
-      >
-    </div>
-    <div class="place__overlay">
-      <h1>{{ place.name }}</h1>
-    </div>
-  </v-card>
+  <span>
+    <v-card class="product-box" flat v-on:click="navigateToPlace()">
+      <div class="place-image">
+        <img
+          :src="place.image_url || data.placeholderUrl"
+          alt="Product's Cover"
+          class="darken"
+        >
+      </div>
+      <div class="place__overlay">
+        <h1>{{ place.name }}</h1>
+      </div>
+    </v-card>
+  </span>
 </template>
 
 <script>
@@ -36,8 +38,9 @@
 
 <style lang="scss" scoped>
 .product-box {
+  width: 40vw;
   height: 18vh;
-  margin-right: 2vh;
+  margin-right: 1vh;
 }
 
 .place-image {
@@ -55,6 +58,9 @@
   position: absolute;
   color: white;
   padding: 1vh;
+  width: 100%;
+  height: 100%;
+  word-wrap: break-word;
 
   h1 {
     margin-top: 11vh;
