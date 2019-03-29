@@ -15,11 +15,19 @@
         class="view_content"
       >
         <div class="view_select">
-          <!-- <h1>Pilih Kategori</h1> -->
+          <h1>Pilih Kategori</h1>
           <v-select
             :items="items"
-            label="Pilih Kategori"
+            label=""
           ></v-select>
+        </div>
+        <div class="view_grid">
+          <product
+            class="product"
+            v-for="product in products"
+            :key="product.name"
+            :product="product"
+          />
         </div>
       </v-flex>
     </v-layout>
@@ -27,11 +35,34 @@
 </template>
 
 <script>
+import Product from '@/components/Product.vue'
+
 export default {
   name: 'Souvenir',
+  components: {
+    Product
+  },
   data() {
     return {
-      items: ['Foo', 'Bar', 'Fizz', 'Buzz']
+      items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+      products: [
+        {
+          name: 'Pepz Kitchen - Kerupuk Rumput Laut',
+          price: 50000
+        },
+        {
+          name: 'Kopi Khas Banyuwangi',
+          price: 20000
+        },
+        {
+          name: 'Kopi Banyuwangi',
+          price: 20000
+        },
+        {
+          name: 'Kopi Baru Banyuwangi',
+          price: 20000
+        }
+      ]
     }
   }
 }
@@ -60,6 +91,9 @@ export default {
 }
 
 #souvenir__content {
-  
+  .product {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
 }
 </style>
