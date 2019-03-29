@@ -1,12 +1,12 @@
 <template>
-    <v-container>
-        <v-progress-circular :indeterminate="true" v-if="isLoading"></v-progress-circular>
-        <v-layout v-else>
-            <v-flex v-for="place in places"  xs4>
-                <Place :place="place"></Place>
-            </v-flex>
-        </v-layout>
-    </v-container>
+  <v-container>
+    <v-progress-circular :indeterminate="true" v-if="isLoading"></v-progress-circular>
+    <v-layout v-else>
+      <v-flex v-for="place in places" xs4>
+        <Place :place="place"></Place>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -20,7 +20,7 @@
       },
       isLoading() {
         return this.$store.getters['place/isLoading'];
-      }
+      },
     },
     mounted() {
       if (!this.$store.getters['place/hasLoad']) {
@@ -28,8 +28,8 @@
       }
     },
     components: {
-      Place
-    }
+      Place,
+    },
   };
 </script>
 
