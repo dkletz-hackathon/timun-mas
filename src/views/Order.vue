@@ -5,10 +5,21 @@
       <v-text-field
         label="Jumlah"
         placeholder="1"
+        clearable
       />
       <v-date-picker
         v-model="start_date"
         :reactive="true"
+      />
+      <v-text-field
+        label="Durasi (dalam jam)"
+        placeholder="1"
+        clearable
+      />
+      <v-text-field
+        label="Nomor HP"
+        placeholder="Contoh: 0812XXXXXXX"
+        clearable
       />
     </div>
   </v-container>
