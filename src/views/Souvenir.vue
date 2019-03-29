@@ -96,7 +96,10 @@ export default {
 
 #souvenir__header {
   height: 30vh;
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('http://3.bp.blogspot.com/-EWR9lu2aVlw/UgO06Xr3fjI/AAAAAAAAEG0/zgyOCbBmxEw/s1600/teluk+hijau+1.jpg') no-repeat right top;
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('../assets/img/misc/batik.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
   h1 {
     margin-top: 16vh;

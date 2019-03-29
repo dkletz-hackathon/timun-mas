@@ -24,6 +24,7 @@ export default {
   },
   computed: {
     products() {
+      console.log(this.$store.state.placeDetail.products);
       return this.$store.state.placeDetail.products;
     },
     isLoading() {

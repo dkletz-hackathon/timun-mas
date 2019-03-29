@@ -40,13 +40,13 @@ export default {
 <style lang="scss" scoped>
 .product-box {
   width: 40vw;
-  height: 18vh;
+  height: 20vh;
   margin-right: 1vh;
 }
 
 .place-image {
   width: 100%;
-  height: 18vh;
+  height: 20vh;
   position: absolute;
   overflow: hidden;
 
