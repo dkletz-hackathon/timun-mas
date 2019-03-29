@@ -40,6 +40,24 @@
             <button class="btn_box">Beli Oleh-Oleh</button>
             <button class="btn_box">Tempat Rekreasi</button>
           </div>
+          <div class="section_content home__buttons">
+            <button class="btn_box">Wisata Kuliner</button>
+            <button class="btn_box">Pantai</button>
+            <button class="btn_box">Beli Oleh-Oleh</button>
+            <button class="btn_box">Tempat Rekreasi</button>
+          </div>
+          <div class="section_content home__buttons">
+            <button class="btn_box">Wisata Kuliner</button>
+            <button class="btn_box">Pantai</button>
+            <button class="btn_box">Beli Oleh-Oleh</button>
+            <button class="btn_box">Tempat Rekreasi</button>
+          </div>
+          <div class="section_content home__buttons">
+            <button class="btn_box">Wisata Kuliner</button>
+            <button class="btn_box">Pantai</button>
+            <button class="btn_box">Beli Oleh-Oleh</button>
+            <button class="btn_box">Tempat Rekreasi</button>
+          </div>
         </div>
         <div id="kuliner">
 
