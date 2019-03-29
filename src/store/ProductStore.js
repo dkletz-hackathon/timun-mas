@@ -17,16 +17,18 @@ const ProductStore = {
     fetchAll({commit, rootState}) {
       const {id} = rootState.place.currentPlace;
       commit('setStatus', 'pending');
-      fetch(`${url}/product`).then(response => response.json()).then(data => {
-        commit('setProducts', data);
-        commit('setStatus', 'idle');
-      });
+      fetch(`${url}/product?place=${id}`).
+          then(response => response.json()).
+          then(data => {
+            commit('setProducts', data);
+            commit('setStatus', 'idle');
+          });
     },
   },
   getters: {
     isLoading: (state) => {
-      return state.status === "pending";
-    }
+      return state.status === 'pending';
+    },
   },
 };
 
