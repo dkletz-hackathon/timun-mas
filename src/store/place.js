@@ -23,7 +23,7 @@ const place = {
   actions: {
     fetchAll({commit}) {
       commit('setStatus', 'pending');
-      fetch(`${url}/places`, {mode: 'cors'}).then(response => response.json()).then(data => {
+      fetch(`${url}/place`, {mode: 'cors'}).then(response => response.json()).then(data => {
         commit('setPlaces', data);
         commit('setStatus', 'done');
       }).catch(() => commit('setStatus', 'idle'));
