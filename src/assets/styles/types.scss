@@ -1,7 +1,10 @@
 @import 'variables';
 
+$play: 'Playfair Display';
+$open: 'Open Sans';
+
 .section_header {
-  font-family: 'Open Sans';
+  font-family: $open;
   display: flex;
 }
 
@@ -24,10 +27,46 @@
 
 .view_header {
   h1, h2, h3, p {
-    font-family: 'Playfair Display';
+    font-family: $play;
     letter-spacing: 0.2rem;
     margin: 0;
     font-weight: normal;
     color: white;
   }
+}
+
+.detail_title {
+  font-family: $play;
+  font-weight: normal;
+  font-size: 3.5vh;
+  letter-spacing: 0.15rem;
+  margin-bottom: 2vh;
+  text-transform: uppercase;
+}
+
+.detail_info {
+  margin-right: 4vw;
+  margin-bottom: 2vh;
+  p {
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: 2vh;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.detail_review {
+  p {
+    color: $red;
+    font-size: 2vh;
+    font-weight: 600;
+    margin-right: 3vw;
+  }
+}
+
+.detail_desc {
+  margin-top: 2vh;
+  margin-bottom: 4vh;
+  font-size: 1.8vh;
 }
