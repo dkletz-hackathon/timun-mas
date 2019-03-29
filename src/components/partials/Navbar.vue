@@ -1,13 +1,37 @@
 <template>
-  <div
-    id="navbar"
-    v-bind:class="{ 'white': isScroll }"
-  >
-    <div class="nav__icon">
-      <img src="../../assets/img/icons/menu.png" alt="">
+  <div id="navbar__base">
+    <div
+      id="navbar__side"
+      v-if="isMenu"
+      v-bind:class="{ 'show': isMenu }"
+    >
+      <router-link to="/">
+        <img src="../../assets/img/logo.png" alt="">
+      </router-link>
+      <router-link
+        class="menu__item"
+        v-for="m in menu"
+        :key="m.name"
+        :to="m.link"
+        @click="toggleMenu"
+      >
+        <h1>{{ m.name }}</h1>
+        <div />
+      </router-link>
     </div>
-    <div class="nav__icon">
-      <img src="../../assets/img/icons/search.png" alt="">
+    <div
+      id="navbar"
+      v-bind:class="{ 'white': isScroll }"
+    >
+      <div
+        class="nav__icon"
+        @click="toggleMenu"
+      >
+        <img src="../../assets/img/icons/menu.png" alt="">
+      </div>
+      <div class="nav__icon">
+        <img src="../../assets/img/icons/search.png" alt="">
+      </div>
     </div>
   </div>
 </template>
@@ -18,8 +42,27 @@ export default {
   data() {
     return {
       isScroll: false,
+      isMenu: false,
       menuIcon: '',
       searchIcon: '',
+      menu: [
+        {
+          name: 'Login',
+          link: '/login'
+        },
+        {
+          name: 'Tempat Wisata',
+          link: '/login'
+        },
+        {
+          name: 'Oleh-Oleh',
+          link: '/souvenir'
+        },
+        {
+          name: 'Service Discovery',
+          link: '/login'
+        }
+      ]
     }
   },
   created() {
@@ -32,6 +75,9 @@ export default {
       } else {
         this.isScroll = false;
       }
+    },
+    toggleMenu() {
+      this.isMenu = !this.isMenu;
     }
   },
 }
@@ -43,13 +89,58 @@ div {
   padding: 0;
 }
 
-#navbar {
+#navbar__base {
   position: fixed;
   z-index: 999;
+  width: 100%;
+}
+
+#navbar__side {
+  position: fixed;
+  background-color: white;
+  height: 100vh;
+  width: 65vw;
+  padding: 4vh;
+  transition-duration: 0.2s;
+
+  &.show {
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide 0.5s forwards;
+    animation-delay: 2s;
+  }
+
+  img {
+    width: 70%;
+    margin: 5vh 0;
+  }
+
+  .menu__item {
+    text-decoration: none;
+
+    h1 {
+      font-family: 'Playfair Display';
+      font-weight: normal;
+      font-size: 2.5vh;
+      letter-spacing: 0.15vh;
+      margin-bottom: 1.5vh;
+      color: black;
+    }
+    div {
+      height: 0.3vh;
+      width: 9vw;
+      background-color: black;
+      margin-bottom: 4vh;
+    }
+  }
+}
+
+#navbar {
   height: 8vh;
   width: 100%;
   display: flex;
   flex-direction: row;
+  transition-duration: 0.2s;
 
   &.white {
     background-color: white;
@@ -64,6 +155,7 @@ div {
 
     img {
       height: 2.2vh;
+      cursor: pointer;
     }
 
     &:first-child {
@@ -78,5 +170,13 @@ div {
       }
     }
   }
+}
+
+@-webkit-keyframes slide {
+  100% { left: 0; }
+}
+
+@keyframes slide {
+  100% { left: 0; }
 }
 </style>
