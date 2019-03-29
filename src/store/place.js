@@ -3,7 +3,7 @@ import {url} from '../config';
 const place = {
   namespaced: true,
   state: {
-    places: [],
+    products: [],
     status: 'idle',
     currentPlace: {},
   },
@@ -17,7 +17,7 @@ const place = {
       state.status = status;
     },
     setCurrentPlace(state, place) {
-      state.place = place;
+      state.currentPlace = place;
     },
   },
   actions: {
@@ -31,7 +31,7 @@ const place = {
   },
   getters: {
     getPlacesByType: (state) => (placeType) => {
-      return state.places.find(place => place.place_type === placeType);
+      return state.products.find(place => place.place_type === placeType);
     },
     isLoading: (state) => {
       return state.status === 'pending';

@@ -1,6 +1,6 @@
 <template>
   <v-card class="product-box" flat>
-    <img :src="placeholder_url" alt="Product's Cover" class="full-width product-image">
+    <img :src="product.image_url || data.placeholderUrl" alt="Product's Cover" class="full-width product-image">
     <h1>{{ product.name }}</h1>
     <div class="horizontal">
       <p class="accent">
