@@ -1,17 +1,19 @@
 <template>
-  <v-card class="product-box" flat>
-    <img :src="product.image_url || this.placeholder_url" alt="Product's Cover" class="full-width product-image">
-    <h1>{{ product.name }}</h1>
-    <div class="horizontal">
-      <!-- <p class="accent">
-        Rp
-      </p> -->
-      <!-- <div class="expand-box"></div> -->
-      <p class="subtitle">
-        Rp {{ product.price }} / pcs
-      </p>
-    </div>
-  </v-card>
+  <span>
+    <v-card class="product-box" flat>
+      <img :src="product.image_url || this.placeholder_url" alt="Product's Cover" class="full-width product-image">
+      <h1>{{ product.name }}</h1>
+      <div class="horizontal">
+        <!-- <p class="accent">
+          Rp
+        </p> -->
+        <!-- <div class="expand-box"></div> -->
+        <p class="subtitle">
+          Rp {{ product.price }} / pcs
+        </p>
+      </div>
+    </v-card>
+  </span>
 </template>
 
 <script>
@@ -39,6 +41,7 @@ export default {
 
 .product-box {
   width: 40vw;
+  margin-right: 1vh;
 
   h1 {
     font-family: 'Playfair Display';

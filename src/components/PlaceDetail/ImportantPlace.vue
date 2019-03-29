@@ -16,7 +16,7 @@
       <button class="btn_box">Tempat Rekreasi</button>
     </div>
     <div class="section_header">
-      <h1 class="section_title">Rekreasi populer di sekitar sini</h1>
+      <h1 class="section_title">Destinasi populer lainnya</h1>
       <!-- <router-link
         class="section_more"
         to="home"

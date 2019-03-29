@@ -27,11 +27,11 @@
         </div>
         <div class="separator" />
         <p class="detail_desc">{{ place.description }}</p>
-        <important-place v-if="place.category === 'tourism'" />
         <product-list
           :id="this.id"
-          v-if="place.category === 'souvenir'"
+          :category="place.category"
         />
+        <important-place v-if="place.category === 'tourism'" />
       </v-flex>
     </v-layout>
   </v-container>
