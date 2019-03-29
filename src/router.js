@@ -6,6 +6,7 @@ import ProductList from './components/PlaceDetail/ProductList'
 import Product from './components/PlaceDetail/Product.vue'
 import Souvenir from './views/Souvenir.vue'
 import PlaceDetail from './views/PlaceDetail.vue'
+import Order from './views/Order.vue'
 
 Vue.use(Router);
 
@@ -65,6 +66,12 @@ export default new Router({
       path: '/detail/:id',
       name: 'PlaceDetail',
       component: PlaceDetail,
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order,
+      props: true
     }
   ]
 })

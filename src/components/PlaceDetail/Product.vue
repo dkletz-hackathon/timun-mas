@@ -1,6 +1,10 @@
 <template>
   <span>
-    <v-card class="product-box" flat>
+    <v-card
+      class="product-box"
+      flat
+      @click="order"
+    >
       <img :src="product.image_url || this.placeholder_url" alt="Product's Cover" class="full-width product-image">
       <h1>{{ product.name }}</h1>
       <div class="horizontal">
@@ -22,9 +26,25 @@ export default {
   props: {
     product: {},
   },
+  mounted() {
+    console.log('hehe');
+    console.log(this.product);
+  },
   data() {
     return {
       placeholder_url: "https://jlfarchitects.com/wp-content/uploads/2015/03/img-placeholder.jpg"
+    }
+  },
+  methods: {
+    order() {
+      if(this.product.category === 'service') {
+        this.$router.push({
+          name: 'Order',
+          params: {
+            id: this.product.id
+          }
+        });
+      }
     }
   }
 };
