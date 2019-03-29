@@ -1,4 +1,4 @@
-const url = 'http://localhost:5000';
+const url = 'http://139.99.79.99:5000';
 export {
   url
 }
