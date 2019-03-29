@@ -25,3 +25,14 @@
 .section_content {
   padding-top: 1.5vh;
 }
+
+.detail_info, .detail_review {
+  display: -webkit-box;
+  flex-direction: row;
+}
+
+.detail_icon {
+  width: 4vw;
+  height: auto;
+  margin-right: 3vw;
+}
