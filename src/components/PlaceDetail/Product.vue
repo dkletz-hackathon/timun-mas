@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/colors';
+@import '../../assets/styles/colors';
 
 .product-image, .product-box {
   background-color: transparent !important;

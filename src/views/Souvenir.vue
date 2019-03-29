@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import Product from '@/components/Product.vue'
+import Product from '@/components/PlaceDetail/Product.vue'
 
 export default {
   name: 'Souvenir',

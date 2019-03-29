@@ -35,9 +35,11 @@ const placeDetail = {
   actions: {
     fetchAll({commit, rootState}, { id }) {
       commit('setProductsStatus', 'pending');
+      console.log(`${url}/product?place=${id}`);
       fetch(`${url}/product?place=${id}`, {mode: 'cors'}).
           then(response => response.json()).
           then(data => {
+            // console.log(`${url}/product?place=${id}`);
             commit('setProducts', data);
             commit('setProductsStatus', 'done');
           }).catch(() => commit('setProductsStatus', 'idle'));

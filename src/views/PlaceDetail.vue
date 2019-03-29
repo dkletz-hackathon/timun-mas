@@ -28,6 +28,10 @@
         <div class="separator" />
         <p class="detail_desc">{{ place.description }}</p>
         <important-place v-if="place.category === 'tourism'" />
+        <product-list
+          :id="this.id"
+          v-if="place.category === 'souvenir'"
+        />
       </v-flex>
     </v-layout>
   </v-container>
@@ -35,11 +39,18 @@
 
 <script>
 import ImportantPlace from '@/components/PlaceDetail/ImportantPlace.vue'
+import ProductList from '@/components/PlaceDetail/ProductList.vue'
 
 export default {
   name: 'PlaceDetail',
   components: {
-    ImportantPlace
+    ImportantPlace,
+    ProductList
+  },
+  data() {
+    return {
+      id: this.$route.params.id
+    }
   },
   computed: {
     place() {
