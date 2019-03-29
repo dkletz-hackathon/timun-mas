@@ -31,6 +31,7 @@ export default {
 
     #app {
         // font-family: 'Playfair Display', 'Open Sans', Arial, sans-serif;
+        font-family: 'Open Sans';
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #2c3e50;

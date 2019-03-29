@@ -1,12 +1,20 @@
 <template>
   <v-container id="home">
     <v-layout row wrap>
-      <v-flex lg12 md12 sm12 xs12 id="home__header">
+      <v-flex
+        lg12 md12 sm12 xs12
+        id="home__header"
+        class="view_header"
+      >
         <h2>SELAMAT DATANG DI</h2>
         <h1>BANYUWANGI</h1>
         <div />
       </v-flex>
-      <v-flex lg12 md12 sm12 xs12 id="home__content">
+      <v-flex
+        lg12 md12 sm12 xs12
+        id="home__content"
+        class="view_content"
+      >
         <div id="kemana">
           <div class="section_header">
             <h1 class="section_title">Mau kemana hari ini?</h1>
@@ -84,10 +92,6 @@ export default {
   min-height: 100vh;
 }
 
-#home__header, #home__content {
-  padding: 3vh;
-}
-
 #home__header {
   height: 35vh;
   background: #ffffff url('http://3.bp.blogspot.com/-EWR9lu2aVlw/UgO06Xr3fjI/AAAAAAAAEG0/zgyOCbBmxEw/s1600/teluk+hijau+1.jpg') no-repeat right top;
@@ -97,13 +101,6 @@ export default {
     width: 20vw;
     height: 0.5vh;
     margin-top: 3vh;
-  }
-  h2, h1 {
-    font-family: 'Playfair Display';
-    letter-spacing: 0.2rem;
-    margin: 0;
-    font-weight: normal;
-    color: white;
   }
   h2 {
     margin-top: 22vh;
