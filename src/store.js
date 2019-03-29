@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { PlaceStore, ProductStore } from './store';
+import { placeStore, productStore } from './store';
 
 Vue.use(Vuex);
 
@@ -15,7 +15,7 @@ export default new Vuex.Store({
 
   },
   modules: {
-    place: PlaceStore,
-    product: ProductStore,
+    place: placeStore,
+    product: productStore,
   }
 })

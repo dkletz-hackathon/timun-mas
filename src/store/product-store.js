@@ -1,6 +1,6 @@
 import {url} from '../config';
 
-const ProductStore = {
+const productStore = {
   state: {
     products: [],
     status: 'pending' | 'idle',
@@ -32,4 +32,4 @@ const ProductStore = {
   },
 };
 
-export default ProductStore;
+export default productStore;

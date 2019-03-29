@@ -1,7 +1,7 @@
-import PlaceStore from './PlaceStore';
-import ProductStore from './ProductStore';
+import placeStore from './place-store';
+import productStore from './product-store';
 
 export {
-  PlaceStore,
-  ProductStore
+  placeStore,
+  productStore
 }

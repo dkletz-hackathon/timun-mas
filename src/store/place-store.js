@@ -1,6 +1,6 @@
 import {url} from '../config';
 
-const PlaceStore = {
+const placeStore = {
   state: {
     places: [],
     status: 'pending' | 'idle',
@@ -36,4 +36,4 @@ const PlaceStore = {
   },
 };
 
-export default PlaceStore;
+export default placeStore;
