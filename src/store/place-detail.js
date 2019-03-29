@@ -6,7 +6,17 @@ const placeDetail = {
     products: [],
     statusPlace: 'idle',
     statusProducts: 'idle',
-    currentPlace: {},
+    currentPlace: {
+      id: '',
+      name: '',
+      address: '',
+      phone_num: '',
+      image_url: '',
+      description: '',
+      geo_x: '',
+      geo_y: '',
+      category: ''
+    },
   },
   mutations: {
     setProducts(state, products) {

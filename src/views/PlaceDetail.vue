@@ -4,8 +4,10 @@
       <v-flex
         lg12 md12 sm12 xs12
         id="placedetail__header"
-        class="view_header"
-      />
+        class="detail_header"
+      >
+        <img :src="place.image_url" alt="" class="darken">
+      </v-flex>
       <v-flex
         lg12 md12 sm12 xs12
         class="view_content"
@@ -25,29 +27,20 @@
         </div>
         <div class="separator" />
         <p class="detail_desc">{{ place.description }}</p>
-        <div class="section_header">
-          <h1 class="section_title">Titik lokasi penting</h1>
-          <router-link
-            class="section_more"
-            to="home"
-          >
-            <h2>Lihat semua</h2>
-          </router-link>
-        </div>
-        <div class="section_content home__buttons">
-          <button class="btn_box">Wisata Kuliner</button>
-          <button class="btn_box">Pantai</button>
-          <button class="btn_box">Beli Oleh-Oleh</button>
-          <button class="btn_box">Tempat Rekreasi</button>
-        </div>
+        <important-place v-if="place.category === 'tourism'" />
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import ImportantPlace from '@/components/PlaceDetail/ImportantPlace.vue'
+
 export default {
   name: 'PlaceDetail',
+  components: {
+    ImportantPlace
+  },
   computed: {
     place() {
       return this.$store.state.placeDetail.currentPlace;

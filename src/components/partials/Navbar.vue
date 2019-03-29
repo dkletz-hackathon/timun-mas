@@ -45,6 +45,7 @@ div {
 
 #navbar {
   position: fixed;
+  z-index: 999;
   height: 8vh;
   width: 100%;
   display: flex;

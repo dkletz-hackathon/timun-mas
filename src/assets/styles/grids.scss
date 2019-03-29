@@ -37,6 +37,14 @@
   padding-top: 1.5vh;
 }
 
+.detail_header {
+  padding: 0;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
 .detail_info, .detail_review {
   display: -webkit-box;
   flex-direction: row;
