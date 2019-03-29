@@ -1,0 +1,36 @@
+<template>
+    <div class="product-box">
+        <img :src="placeholder_url" alt="Product's Cover" class="full-width product-image">
+        <h1>{{ product.name }}</h1>
+        <div class="horizontal">
+            <p class="accent">
+                Rp
+            </p>
+            <div class="expand-box"></div>
+            <p class="subtitle">
+                Harga mulai {{ product.price || 200000 }}/jam
+            </p>
+        </div>
+    </div>
+</template>
+
+<script>
+  export default {
+    name: 'Product',
+    props: {
+      product: {},
+    },
+    data() {
+      return {
+        placeholder_url: "https://jlfarchitects.com/wp-content/uploads/2015/03/img-placeholder.jpg"
+      }
+    }
+  };
+</script>
+
+<style scoped>
+    .product-image, .product-box {
+        max-width: 200px;
+        max-height: 200px;
+    }
+</style>

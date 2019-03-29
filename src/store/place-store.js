@@ -1,6 +1,7 @@
 import {url} from '../config';
 
 const placeStore = {
+  namespaced: true,
   state: {
     places: [],
     status: 'pending' | 'idle',
