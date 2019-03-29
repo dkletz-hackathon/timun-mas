@@ -1,8 +1,19 @@
 @import 'variables';
 
+.darken {
+  filter: brightness(80%);
+}
+
 .container {
   margin: 0 !important;
   padding: 0 !important;
+}
+
+.view_buttons {
+  button {
+    width: calc(50% - 2vw);
+    margin: 1vw;
+  }
 }
 
 .view_header, .view_content {

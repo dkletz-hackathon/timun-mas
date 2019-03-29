@@ -42,25 +42,20 @@
               <h2>Lihat semua</h2>
             </router-link>
           </div>
-          <div class="section_content home__buttons">
+          <PlaceList />
+          <div class="section_content view_buttons">
             <button class="btn_box">Wisata Kuliner</button>
             <button class="btn_box">Pantai</button>
             <button class="btn_box">Beli Oleh-Oleh</button>
             <button class="btn_box">Tempat Rekreasi</button>
           </div>
-          <div class="section_content home__buttons">
+          <div class="section_content view_buttons">
             <button class="btn_box">Wisata Kuliner</button>
             <button class="btn_box">Pantai</button>
             <button class="btn_box">Beli Oleh-Oleh</button>
             <button class="btn_box">Tempat Rekreasi</button>
           </div>
-          <div class="section_content home__buttons">
-            <button class="btn_box">Wisata Kuliner</button>
-            <button class="btn_box">Pantai</button>
-            <button class="btn_box">Beli Oleh-Oleh</button>
-            <button class="btn_box">Tempat Rekreasi</button>
-          </div>
-          <div class="section_content home__buttons">
+          <div class="section_content view_buttons">
             <button class="btn_box">Wisata Kuliner</button>
             <button class="btn_box">Pantai</button>
             <button class="btn_box">Beli Oleh-Oleh</button>
@@ -78,11 +73,13 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import PlaceList from '@/components/PlaceList.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    HelloWorld,
+    PlaceList
   }
 }
 </script>
@@ -93,21 +90,22 @@ export default {
 }
 
 #home__header {
-  height: 35vh;
-  background: #ffffff url('http://3.bp.blogspot.com/-EWR9lu2aVlw/UgO06Xr3fjI/AAAAAAAAEG0/zgyOCbBmxEw/s1600/teluk+hijau+1.jpg') no-repeat right top;
+  height: 42vh;
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('https://1.bp.blogspot.com/-EcRrSqJ8_zY/V0hk7xwKpTI/AAAAAAAAQT0/KfL55jpP8bM9-Cr9edVCluiwWVuoXrnBgCLcB/s1600/Teluk%2Bhijau%2B7.jpg') no-repeat right top;
 
   div {
     background-color: white;
-    width: 20vw;
+    width: 15vw;
     height: 0.5vh;
     margin-top: 3vh;
   }
   h2 {
     margin-top: 22vh;
-    font-size: 2vh;
+    font-size: 2.3vh;
+    word-spacing: 0.5rem;
   }
   h1 {
-    font-size: 4vh;
+    font-size: 4.8vh;
   }
 }
 
