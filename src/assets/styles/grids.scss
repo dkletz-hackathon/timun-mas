@@ -16,6 +16,12 @@
   }
 }
 
+.view_grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .section_content {
   padding-top: 1.5vh;
 }
