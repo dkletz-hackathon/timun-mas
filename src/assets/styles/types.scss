@@ -21,3 +21,13 @@
     font-size: 2vh;
   }
 }
+
+.view_header {
+  h1, h2, h3, p {
+    font-family: 'Playfair Display';
+    letter-spacing: 0.2rem;
+    margin: 0;
+    font-weight: normal;
+    color: white;
+  }
+}

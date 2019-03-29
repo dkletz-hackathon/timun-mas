@@ -1,5 +1,21 @@
 @import 'variables';
 
+.container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.view_header, .view_content {
+  padding: 3vh;
+}
+
+.view_select {
+  h1 {
+    font-size: 1.5vh;
+    font-family: 'Open Sans';
+  }
+}
+
 .section_content {
   padding-top: 1.5vh;
 }

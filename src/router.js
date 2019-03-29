@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import PlaceList from './components/PlaceList'
 import Product from './components/Product.vue'
+import Souvenir from './views/Souvenir.vue'
 
 Vue.use(Router);
 
@@ -32,6 +33,17 @@ export default new Router({
       path: '/product',
       name: 'Product',
       component: Product,
+      props: {
+        product: {
+          name: "Mantap",
+          price: 100000,
+        }
+      }
+    },
+    {
+      path: '/souvenir',
+      name: 'Souvenir',
+      component: Souvenir,
       props: {
         product: {
           name: "Mantap",
