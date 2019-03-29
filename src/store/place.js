@@ -1,10 +1,10 @@
 import {url} from '../config';
 
-const placeStore = {
+const place = {
   namespaced: true,
   state: {
     places: [],
-    status: 'pending' | 'idle',
+    status: 'idle',
     currentPlace: {},
   },
   mutations: {
@@ -12,6 +12,7 @@ const placeStore = {
       state.places = places;
     },
     setStatus(state, status) {
+      console.log('Change status to', status);
       state.status = status;
     },
     setCurrentPlace(state, place) {
@@ -23,8 +24,8 @@ const placeStore = {
       commit('setStatus', 'pending');
       fetch(`${url}/place`).then(response => response.json()).then(data => {
         commit('setPlaces', data);
-        commit('setStatus', 'idle');
-      });
+        commit('setStatus', 'done');
+      }).catch(() => commit('setStatus', 'idle'));
     },
   },
   getters: {
@@ -34,7 +35,10 @@ const placeStore = {
     isLoading: (state) => {
       return state.status === 'pending';
     },
+    hasLoad: (state) => {
+      return state.status === 'done';
+    }
   },
 };
 
-export default placeStore;
+export default place;

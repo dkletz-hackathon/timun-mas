@@ -1,5 +1,5 @@
 <template>
-    <div class="product-box">
+    <v-card class="product-box" flat>
         <img :src="placeholder_url" alt="Product's Cover" class="full-width product-image">
         <h1>{{ product.name }}</h1>
         <div class="horizontal">
@@ -11,7 +11,7 @@
                 Harga mulai {{ product.price || 200000 }}/jam
             </p>
         </div>
-    </div>
+    </v-card>
 </template>
 
 <script>
