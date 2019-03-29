@@ -31,6 +31,7 @@ export default {
   methods: {
     navigateToPlace() {
       console.log(`/detail/${this.$props.place.id}`);
+      this.$store.dispatch('placeDetail/fetchPlace', { id: this.$props.place.id });
       router.push({path: `/detail/${this.$props.place.id}`});
     },
   },
