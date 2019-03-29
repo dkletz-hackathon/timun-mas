@@ -6,21 +6,21 @@
         label="Jumlah"
         placeholder="1"
         clearable
-      />
+        v-model="total"></v-text-field>
       <v-date-picker
-        v-model="start_date"
+        v-model="startDate"
         :reactive="true"
       />
       <v-text-field
         label="Durasi (dalam jam)"
         placeholder="1"
-        clearable
-      />
+        v-model="duration"
+        clearable></v-text-field>
       <v-text-field
         label="Nomor HP"
         placeholder="Contoh: 0812XXXXXXX"
-        clearable
-      />
+        v-model="phoneNumber"
+        clearable></v-text-field>
     </div>
   </v-container>
 </template>
@@ -31,12 +31,39 @@ export default {
   props: {
     id: '',
   },
-  data() {
-    return {
-      start_date: '',
-      duration: '',
-      total: '',
-      phone_num: '',
+  computed: {
+    startDate: {
+      get () {
+        return this.$store.state.orderProcess.order.start_date;
+      },
+      set (value) {
+        console.log(value);
+        this.$store.commit('orderProcess/setStartDate', value);
+      }
+    },
+    total: {
+      get () {
+        return this.$store.state.orderProcess.order.total;
+      },
+      set (value) {
+        this.$store.commit('orderProcess/setTotal', value);
+      }
+    },
+    duration: {
+      get () {
+        return this.$store.state.orderProcess.order.duration;
+      },
+      set (value) {
+        this.$store.commit('orderProcess/setDuration', value);
+      }
+    },
+    phoneNumber: {
+      get () {
+        return this.$store.state.orderProcess.order.phone_num;
+      },
+      set (value) {
+        this.$store.commit('orderProcess/setPhoneNumber', value);
+      }
     }
   },
   created() {
