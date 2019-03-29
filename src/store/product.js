@@ -1,10 +1,10 @@
 import {url} from '../config';
 
-const productStore = {
+const product = {
   namespaced: true,
   state: {
     products: [],
-    status: 'pending' | 'idle',
+    status: 'idle',
   },
   mutations: {
     setProducts(state, products) {
@@ -18,19 +18,22 @@ const productStore = {
     fetchAll({commit, rootState}) {
       const {id} = rootState.place.currentPlace;
       commit('setStatus', 'pending');
-      fetch(`${url}/product?place=${id}`).
+      fetch(`${url}/product?place=${id}`, {mode: 'cors'}).
           then(response => response.json()).
           then(data => {
             commit('setProducts', data);
-            commit('setStatus', 'idle');
-          });
+            commit('setStatus', 'done');
+          }).catch(() => commit('setStatus', 'idle'));
     },
   },
   getters: {
     isLoading: (state) => {
       return state.status === 'pending';
     },
+    hasLoad: (state) => {
+      return state.status === 'done';
+    },
   },
 };
 
-export default productStore;
+export default product;

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import PlaceList from './components/PlaceList'
 import Product from './components/Product.vue'
 import Souvenir from './views/Souvenir.vue'
 
@@ -14,6 +15,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/list',
+      name: 'list',
+      component: PlaceList
     },
     {
       path: '/about',
