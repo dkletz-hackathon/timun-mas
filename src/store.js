@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { PlaceStore } from './store';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -12,5 +13,8 @@ export default new Vuex.Store({
   },
   actions: {
 
+  },
+  modules: {
+    place: PlaceStore,
   }
 })
