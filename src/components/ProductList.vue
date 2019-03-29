@@ -15,16 +15,16 @@
   export default {
     name: 'ProductList',
     computed: {
-      products() {
-        return this.$store.state.product.products;
+      places() {
+        return this.$store.state.placeDetail.places;
       },
       isLoading() {
-        return this.$store.getters['product/isLoading'];
+        return this.$store.getters['placeDetail/isLoading'];
       },
     },
     beforeMount() {
-      if (!this.$store.getters['product/hasLoad']) {
-        this.$store.dispatch('product/fetchAll', {}, {root: true});
+      if (!this.$store.getters['placeDetail/hasLoad']) {
+        this.$store.dispatch('placeDetail/fetchAll', {}, {root: true});
       }
     },
     components: {

@@ -24,8 +24,8 @@ export default new Router({
       component: PlaceList
     },
     {
-      path: '/list-product',
-      name: 'list-product',
+      path: '/list-placeDetail',
+      name: 'list-placeDetail',
       component: ProductList
     },
     {
@@ -37,7 +37,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/product',
+      path: '/placeDetail',
       name: 'Product',
       component: Product,
       props: {
@@ -59,7 +59,7 @@ export default new Router({
       }
     },
     {
-      path: '/detail',
+      path: '/detail/:id',
       name: 'PlaceDetail',
       component: PlaceDetail,
     }

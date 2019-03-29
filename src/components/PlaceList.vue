@@ -17,15 +17,15 @@
     name: 'PlaceList',
     computed: {
       places() {
-        return this.$store.state.place.places;
+        return this.$store.state.placeList.places;
       },
       isLoading() {
-        return this.$store.getters['place/isLoading'];
+        return this.$store.getters['placeList/isLoading'];
       },
     },
     beforeMount() {
-      if (!this.$store.getters['place/hasLoad']) {
-        this.$store.dispatch('place/fetchAll', {}, {root: true});
+      if (!this.$store.getters['placeList/hasLoad']) {
+        this.$store.dispatch('placeList/fetchAll', {}, {root: true});
       }
     },
     components: {

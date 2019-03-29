@@ -10,21 +10,21 @@
         lg12 md12 sm12 xs12
         class="view_content"
       >
-        <h1 class="detail_title">Pantai Teluk Ijo</h1>
+        <h1 class="detail_title">{{ place.name }}</h1>
         <div class="detail_info">
           <img src="../assets/img/icons/location.png" alt="" class="detail_icon">
-          <p>Dusun Krajan, Sarongan, Pesanggaran, Banyuwangi Regency, East Java 68488</p>
+          <p>{{ place.address }}</p>
         </div>
         <div class="detail_info">
           <img src="../assets/img/icons/phone.png" alt="" class="detail_icon">
-          <p>0812-8349-3456</p>
+          <p>{{ place.phone_num }}</p>
         </div>
         <div class="detail_review">
           <p>Berikan review anda</p>
           <img src="../assets/img/icons/review.png" alt="" class="detail_icon">
         </div>
         <div class="separator" />
-        <p class="detail_desc">Teluk Hijau adalah objek wisata pantai yang berada dalam areal Taman Nasional Meru Betiri, Sarongan, Pesanggaran, Banyuwangi. Lokasinya berjarak sekitar 90 kilometer dari Kota Banyuwangi. Dinamai demikian dikarenakan air lautnya yang cenderung berwarna hijau.</p>
+        <p class="detail_desc">{{ place.description }}</p>
         <div class="section_header">
           <h1 class="section_title">Titik lokasi penting</h1>
           <router-link
@@ -47,7 +47,16 @@
 
 <script>
 export default {
-  name: 'PlaceDetail',  
+  name: 'PlaceDetail',
+  computed: {
+    place() {
+      return this.$store.state.placeDetail.currentPlace;
+    }
+  },
+  mounted() {
+    this.$store.dispatch('placeDetail/fetchPlace', { id: this.$route.params.id }, { root: true });
+    this.$store.dispatch('placeDetail/fetchAll', { id: this.$route.params.id }, { root: true })
+  }
 }
 </script>
 

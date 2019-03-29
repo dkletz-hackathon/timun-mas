@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
-      products: [
+      places: [
         {
           name: 'Pepz Kitchen - Kerupuk Rumput Laut',
           price: 50000

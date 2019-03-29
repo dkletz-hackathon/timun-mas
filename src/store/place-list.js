@@ -1,11 +1,10 @@
 import {url} from '../config';
 
-const place = {
+const placeList = {
   namespaced: true,
   state: {
-    products: [],
+    places: [],
     status: 'idle',
-    currentPlace: {},
   },
   mutations: {
     setPlaces(state, places) {
@@ -15,9 +14,6 @@ const place = {
     setStatus(state, status) {
       console.log('Change status to', status);
       state.status = status;
-    },
-    setCurrentPlace(state, place) {
-      state.currentPlace = place;
     },
   },
   actions: {
@@ -31,7 +27,7 @@ const place = {
   },
   getters: {
     getPlacesByType: (state) => (placeType) => {
-      return state.products.find(place => place.place_type === placeType);
+      return state.places.find(place => place.place_type === placeType);
     },
     isLoading: (state) => {
       return state.status === 'pending';
@@ -42,4 +38,4 @@ const place = {
   },
 };
 
-export default place;
+export default placeList;

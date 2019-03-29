@@ -21,10 +21,9 @@
     },
     methods: {
       navigateToPlace() {
-        this.$store.commit('place/setCurrentPlace', this.$props.place, {root: true});
-        router.push({ name: "list-product" });
-      }
-    }
+        router.push({path: `/detail/${this.$props.place.id}`});
+      },
+    },
   };
 </script>
 
