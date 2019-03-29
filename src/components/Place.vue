@@ -44,6 +44,7 @@ export default {
   width: 40vw;
   height: 20vh;
   margin-right: 1vh;
+  margin-bottom: 2vh;
 }
 
 .place-image {

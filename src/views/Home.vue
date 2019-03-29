@@ -28,7 +28,9 @@
           <div class="section_content home__buttons">
             <button class="btn_box">Wisata Kuliner</button>
             <button class="btn_box">Pantai</button>
-            <button class="btn_box">Beli Oleh-Oleh</button>
+            <router-link to="/souvenir">
+              <button class="btn_box">Beli Oleh-Oleh</button>
+            </router-link>
             <button class="btn_box">Tempat Rekreasi</button>
           </div>
         </div>
@@ -99,6 +101,7 @@ export default {
     button {
       width: calc(50% - 2vw);
       margin: 1vw;
+      color: black;
     }
   }
 }
