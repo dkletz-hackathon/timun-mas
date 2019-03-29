@@ -31,11 +31,6 @@ export default {
       return this.$store.getters['placeDetail/isLoading'];
     },
   },
-  beforeMount() {
-    if (!this.$store.getters['placeDetail/hasLoad']) {
-      this.$store.dispatch('placeDetail/fetchAll', { id: this.id }, {root: true});
-    }
-  },
   components: {
     Product,
   },
